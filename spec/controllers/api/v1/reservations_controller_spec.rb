@@ -7,7 +7,10 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       let(:valid_payload) { build(:airbnb_payload) }
       
       it 'returns a success response' do
-        post :create, params: {}, body: valid_payload, as: :json
+        expect {
+          post :create, params: {}, body: valid_payload, as: :json
+        }.to change(Reservation, :count).by(1).and change(Guest, :count).by(1)
+
         expect(response).to have_http_status(:created)
       end
       

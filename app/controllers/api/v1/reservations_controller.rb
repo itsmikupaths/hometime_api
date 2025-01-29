@@ -32,7 +32,6 @@ class Api::V1::ReservationsController < ApplicationController
         guest_id: guest.id
       )
 
-      # render json: { reservation: reservation, guest: guest }, status: :created
       render json: reservation.as_json.merge(guest: guest.as_json), status: :created
     rescue ActiveRecord::RecordInvalid => e
       render json: { error: "Record invalid: #{e.message}" }, status: :unprocessable_entity
@@ -43,5 +42,18 @@ class Api::V1::ReservationsController < ApplicationController
     reservations = Reservation.includes(:guest).all
 
     render json: reservations, include: :guest, status: :ok
+  end
+
+  def show
+    reservation = Reservation.find_by(id: params[:id])
+
+    if reservation.nil?
+      render json: { error: 'Reservation not found' }, status: :not_found
+      return
+    end
+
+    guest = reservation.guest
+    
+    render json: reservation.as_json.merge(guest: guest.as_json), status: :ok
   end
 end
