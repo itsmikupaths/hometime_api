@@ -8,9 +8,6 @@ class ReservationMapper
 
     parsed_payload.deep_symbolize_keys!
 
-    puts "Parsed Payload: #{parsed_payload.inspect}"
-
-    # Initialize the parsed data hash
     mapped_data = {}
 
     # Iterate through the schema to map values from the payload
@@ -56,5 +53,4 @@ class ReservationMapper
 
     result
   end
-
 end
