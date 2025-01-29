@@ -2,7 +2,7 @@
 
 This is a simple Rails API that allows you to create reservations for guests, authenticate requests with API keys, and manage the API keys for trusted applications.
 
-Ruby 3.3.0
+Ruby 3.3.0 \
 Rails 7.1.5.1
 
 ## Table of Contents
@@ -58,7 +58,7 @@ A simple end-point is created to generate an API key.
 Send a POST request to the http://localhost:3000/api/v1/api_keys endpoint with the app_name in the request body. (use your preferred API testing tools like Postman, Curl)
 
 Request header: \
-Content-Type: application/json \
+Content-Type: application/json
 
 Request Body:
 
