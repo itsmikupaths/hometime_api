@@ -1,4 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
+  before_action :authenticate_api_key, only: [:create]
+
   def create
     payload = request.body.read
 
@@ -53,7 +55,7 @@ class Api::V1::ReservationsController < ApplicationController
     end
 
     guest = reservation.guest
-    
+
     render json: reservation.as_json.merge(guest: guest.as_json), status: :ok
   end
 end
