@@ -32,7 +32,8 @@ class Api::V1::ReservationsController < ApplicationController
         guest_id: guest.id
       )
 
-      render json: { reservation: reservation, guest: guest }, status: :created
+      # render json: { reservation: reservation, guest: guest }, status: :created
+      render json: reservation.as_json.merge(guest: guest.as_json), status: :created
     rescue ActiveRecord::RecordInvalid => e
       render json: { error: "Record invalid: #{e.message}" }, status: :unprocessable_entity
     end

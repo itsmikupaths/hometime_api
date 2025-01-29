@@ -14,7 +14,7 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       it 'maps the reservation attributes correctly' do
         post :create, params: {}, body: valid_payload, as: :json
         parsed_response = JSON.parse(response.body)
-        expect(parsed_response['reservation']['start_date']).to eq('2021-03-12')
+        expect(parsed_response['start_date']).to eq('2021-03-12')
         expect(parsed_response['guest']['phone']).to eq('639123456789')
       end
     end
