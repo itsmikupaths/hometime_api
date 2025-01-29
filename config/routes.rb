@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'health_check', to: 'health_check#index'
       resources :reservations, only: [:index, :create, :show]
+      resources :api_keys, only: [:create]
     end
   end
 end

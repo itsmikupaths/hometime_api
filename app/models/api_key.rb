@@ -2,7 +2,6 @@ class ApiKey < ApplicationRecord
   before_create :generate_key
 
   validates :app_name, presence: true, uniqueness: true
-  validates :key, presence: true, uniqueness: true
 
   private
 
